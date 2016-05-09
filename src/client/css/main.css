@@ -36,8 +36,11 @@ nav ul li a:hover {
 }
 
 .box {
+  position: relative;
   border: solid 1px #B0B0B0;
   padding: 1rem;
+  margin: 0;
+  height: 100%;
 }
 
 .title-img {
