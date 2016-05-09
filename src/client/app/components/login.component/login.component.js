@@ -5,14 +5,37 @@
     .module('gStudyApp')
     .component('loginComponent', {
       bindings: {
-        ngModel: '=',
+        ngModel: '='
       },
       controller: loginController,
-      templateUrl: './login.html'
+      templateUrl: 'app/components/login.component/login.html'
     });
 
-  function loginController(){
+loginController.$inject = ['$rootScope', '$location', '$localStorage', 'Auth'];
+function loginController($rootScope, $location, $localStorage, Auth){
+    var ctrl = this;
+    function successAuth(res) {
+         console.log(res);
+           console.log(res.token);
+        if (res.token){
+          $localStorage.token = res.token;
+          console.log("Successfully logged in!");
+          alert('pause');
+          window.location = "/";
+        } else {
+          console.log("login Failed");
+        }
+      }
 
+     ctrl.login = function () {
+         var formData = {
+             email: ctrl.email,
+             password: ctrl.password
+         };
+
+         Auth.login(formData, successAuth, function () {
+             $rootScope.error = 'Invalid credentials.';
+         });
+     };
   }
 })();
-

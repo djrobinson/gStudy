@@ -48,7 +48,16 @@ router.post('/register', function(req, res, next) {
           password: hashedPassword
         })
         .then(function(data) {
+          var user = {
+            name: name,
+            email: email,
+            password: hashedPassword
+          };
+          var token = jwt.sign(user, process.env.api_auth, {
+            expiresIn: 6000
+          });
           res.json({
+            token: token,
             message: "You've registered",
             status: "Success"
           });
@@ -66,6 +75,7 @@ router.post('/register', function(req, res, next) {
 router.post('/login', function(req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
+  console.log("Login route", req.body);
   knex('users').where('email', email)
       .then(function(data) {
         // username does not exist. return error.
@@ -80,7 +90,7 @@ router.post('/login', function(req, res, next) {
           var token = jwt.sign(user, process.env.api_auth, {
             expiresIn: 6000
           });
-          return res.send('You\'re logged in!');
+          return res.send({'token': token});
         } else {
           // passwords don't match! return error
           return res.json('Incorrect password.');
