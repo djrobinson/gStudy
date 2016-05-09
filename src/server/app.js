@@ -13,7 +13,7 @@ var routerProtect = express.Router();
 
 // *** routes *** //
 var auth = require('./routes/auth.js');
-
+var decks = require('./routes/decks.js');
 
 // *** jwt auth *** //
 routerProtect.use(function(req, res, next) {
@@ -58,6 +58,7 @@ app.get('/', function(req,res,next) {
     res.sendFile(path.join(__dirname, '../client/app', 'index.html'));
 });
 app.use('/auth', auth);
+app.use('/api/decks', decks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="twelve column text-center">
+    <h1>Create a New Deck</h1>
+  </div>
+  <div class="twelve column">
+    <h4>Deck Info</h4>
+  </div>
+  <div class="twelve column box">
+    <div class="six columns">
+      <label>Deck Name</label>
+      <input class="u-full-width" type="text" ng-model="$ctrl.deck.title">
+    </div>
+    <div class="six columns">
+      <label>Deck Description</label>
+      <textarea class="u-full-width" ng-model="$ctrl.deck.description"></textarea>
+    </div>
+  </div>
+  <div class="twelve column">
+    <h4>Cards</h4>
+  </div>
+  <div class="twelve column box">
+    <div class="row">
+      <div class="six columns">
+        <label>Question</label>
+        <input class="u-full-width" type="text">
+      </div>
+      <div class="six columns">
+        <label>Answer</label>
+        <input class="u-full-width" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <label>Question Image Url</label>
+        <input class="u-full-width" type="text">
+      </div>
+      <div class="six columns">
+        <label>Answer Image Url</label>
+        <input class="u-full-width" type="text">
+      </div>
+    </div>
+    <button>+ Add a New Question</button>
+  </div>
+  <div class="twelve column">
+    <br>
+    <button class="pull-right" ng-click="$ctrl.createDeck()">Create Deck</button>
+  </div>
+
+</div>
