@@ -8,15 +8,12 @@
         <hr>
       </div>
       <div class="row">
-        <div class="one-third column box">
-          <h5>Deck One</h5>
+
+        <div class="one-third column box" ng-repeat="deck in $ctrl.decks">
+          <h5>{{deck.title}}</h5>
+          <p>{{deck.description}}</p>
         </div>
-        <div class="one-third column box">
-          <h5>Deck Two</h5>
-        </div>
-        <div class="one-third column box">
-          <h5>Deck Three</h5>
-        </div>
+
       </div>
     </div>
     <div class="one-third column">

@@ -11,7 +11,12 @@
       templateUrl: 'app/components/main.component/main.html'
     });
 
-  function mainController(){
-
+  mainController.$inject = ['deckService'];
+  function mainController(deckService){
+    var ctrl = this;
+    deckService.getDecks()
+    .then(function(data){
+      ctrl.decks = data;
+    });
   }
 })();

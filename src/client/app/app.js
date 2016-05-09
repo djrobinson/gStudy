@@ -31,9 +31,9 @@ angular
 .component('home', {
   templateUrl: 'app/template.html',
   $routeConfig: [
-    {path: '/login', name: 'Login', component: 'loginComponent', useAsDefault: true},
+    {path: '/login', name: 'Login', component: 'loginComponent'},
     {path: '/register', name: 'Register', component: 'registerComponent' },
-    {path: '/home', name: 'Main', component: 'mainComponent'},
+    {path: '/home', name: 'Main', component: 'mainComponent', useAsDefault: true},
     {path: '/create', name: 'Create', component: 'createComponent'}
   ],
   controller: logoutController

@@ -14,6 +14,7 @@ var routerProtect = express.Router();
 // *** routes *** //
 var auth = require('./routes/auth.js');
 var decks = require('./routes/decks.js');
+var questions = require('./routes/questions.js');
 
 // *** jwt auth *** //
 routerProtect.use(function(req, res, next) {
@@ -59,6 +60,7 @@ app.get('/', function(req,res,next) {
 });
 app.use('/auth', auth);
 app.use('/api/decks', decks);
+app.use('/api/questions', questions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

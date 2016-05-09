@@ -18,28 +18,31 @@
   <div class="twelve column">
     <h4>Cards</h4>
   </div>
-  <div class="twelve column box">
+  <div class="twelve column box" style="margin-top: 2rem;" ng-repeat="(key, question) in $ctrl.questions track by key">
     <div class="row">
       <div class="six columns">
         <label>Question</label>
-        <input class="u-full-width" type="text">
+        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].question">
       </div>
       <div class="six columns">
         <label>Answer</label>
-        <input class="u-full-width" type="text">
+        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].answer">
       </div>
     </div>
     <div class="row">
       <div class="six columns">
         <label>Question Image Url</label>
-        <input class="u-full-width" type="text">
+        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].question_url">
       </div>
       <div class="six columns">
         <label>Answer Image Url</label>
-        <input class="u-full-width" type="text">
+        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].answer_url">
       </div>
     </div>
-    <button>+ Add a New Question</button>
+  </div>
+  <hr>
+  <div class="twelve column" style="padding-top: 2rem;">
+    <button ng-click="$ctrl.addQuestion()">+ Add a New Question</button>
   </div>
   <div class="twelve column">
     <br>

@@ -10,7 +10,8 @@
     function deckService($http, $log) {
         return {
             getDecks: getDecks,
-            createDeck: createDeck
+            createDeck: createDeck,
+            createQuestion: createQuestion
         };
 
         function getDecks() {
@@ -20,7 +21,7 @@
 
             function decksComplete(response) {
                 console.log(response.data);
-                return response.data.data;
+                return response.data;
             }
 
             function decksFailed(error) {
@@ -40,6 +41,21 @@
 
             function createDeckFailed(error) {
                 $log.error('XHR Failed for decks.' + error.data);
+            }
+        }
+
+        function createQuestion(question){
+            return $http.post('/api/questions/create', question)
+                .then(createQuestionComplete)
+                .catch(createQuestionFailed);
+
+            function createQuestionComplete(response) {
+                console.log(response.data);
+                return response.data;
+            }
+
+            function createQuestionFailed(error) {
+                $log.error('XHR Failed for questions.' + error.data);
             }
         }
     }
