@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="gStudyApp">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>gStudy Flashcards</title>
+    <!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
+    <link rel="stylesheet" href="../css/main.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-css/1.0.7/angular-css.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" ng-href="{{css}}">
+    <script src="https://npmcdn.com/@angular/router@0.2.0/angular1/angular_1_router.js"></script>
   </head>
   <body>
-    <h2>gStudy</h2>
-    <div ui-view>
-
-      <!-- Partials here -->
-
+    <div class="container">
+      <div class="row">
+        <div class="navbar-spacer"></div>
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item"><a class="navbar-link">GStudy</a></li>
+            <li class="navbar-item"><a class="navbar-link">Two</a></li>
+            <li class="navbar-item"><a class="navbar-link">Three</a></li>
+            <li class="navbar-item"><a class="navbar-link">Four</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="row">
+        <home></home>
+      </div>
     </div>
+
+
     <script src="/app/app.js" charset="utf-8"></script>
+    <script src="/app/components/login.component/login.component.js"></script>
   </body>
 </html>

@@ -1,8 +1,56 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+.navbar-spacer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-a {
-  color: #00B7FF;
+.text-center {
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+nav ul {
+  float: left;
+}
+
+nav ul li {
+  display: inline;
+  padding-left: 4rem;
+  float: left;
+}
+
+nav ul li a {
+  font-size: 3rem;
+}
+
+nav ul li a:hover {
+  color: #1F01B9;
+}
+
+.login {
+  margin-top: 15%;
+  margin-bottom: 15%;
+}
+
+.box {
+  border: solid 1px #B0B0B0;
+  padding: 1rem;
+}
+
+.title-img {
+  width: 100%;
+}
+
+.question {
+  position: relative;
+
+  top: 4rem;
+}
+
+.answer {
+  position: relative;
+  top: 8rem;
 }
