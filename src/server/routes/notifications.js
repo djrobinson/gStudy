@@ -1,14 +1,6 @@
 var router = require('express').Router();
 var knex = require('../db/knex.js');
 
-// router.get('/ping', ping);
-// router.get('/notifications', get);
-// router.post('/notifications', post);
-// router.put('/notifications/:id/read', read);
-
-module.exports = router;
-
-///////////////////////////
 router.get('/ping', function(req, res, next){
   global.io.emit('status', 'pong!');
   res.status(200).json({ message: 'pong!' });
@@ -54,17 +46,4 @@ router.put('/:id/read', function(req, res, next){
     });
 });
 
-// function read (req, res) {
-//   db.Notification.findById(req.params.id)
-//   .then(function (notification) {
-//     notification.read = true;
-//     return notification.save();
-//   })
-//   .then(function (notification) {
-//     global.io.emit('notification.read', notification._id + ' was read.');
-//     res.status(200).json(notification);
-//   })
-//   .catch(function (notification) {
-//     res.status(422).json(notification);
-//   });
-// }
+module.exports = router;

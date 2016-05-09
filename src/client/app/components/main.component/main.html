@@ -16,10 +16,22 @@
 
     </div>
     <div class="one-third column">
-      <h2>Notifications</h2>
-      <div class="twelve columns box text-center">
-        <p>Grover just posted something</p>
-      </div>
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Sender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="notif in $ctrl.notifications"
+            ng-class="{ 'warning': !notif.read }"
+            ng-click="$ctrl.markAsRead(notif)">
+          <td>{{ notif.user_id }}</td>
+          <td>{{ notif.content }}</td>
+        </tr>
+      </tbody>
+    </table>
     </div>
   </div>
 </div>

@@ -22,8 +22,8 @@
   <body>
 
     <home></home>
-
-
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app/vendor/btford-socket.min.js"></script>
     <script src="app/app.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
     <script src="app/components/login.component/login.component.js"></script>
@@ -32,5 +32,16 @@
     <script src="app/components/create.component/create.component.js"></script>
     <script src="app/services/auth.factory.js"></script>
     <script src="app/services/decks.service.js"></script>
+
+    <script src="app/services/notification.service.js"></script>
+<!--     <script type="text/javascript">
+        window.socket = io("http://localhost:3000");
+        socket.on('receive', function (sockets) {
+            console.log(sockets)
+            console.log('!');
+        });
+        socket.emit('send', 'Hello')
+    </script> -->
+
   </body>
 </html>

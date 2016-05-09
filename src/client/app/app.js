@@ -1,8 +1,11 @@
+(function(){
+
+
 'use strict';
 
 
 angular
-  .module('gStudyApp', ['ngComponentRouter', 'ngStorage'])
+  .module('gStudyApp', ['ngComponentRouter', 'ngStorage', 'btford.socket-io'])
 
 .config(function($locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
@@ -50,3 +53,4 @@ function logoutController(Auth){
          });
      };
 }
+})();
