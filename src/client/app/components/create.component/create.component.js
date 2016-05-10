@@ -27,7 +27,6 @@
       var deck = ctrl.deck;
       var questions = ctrl.questions;
       deck.updated = new Date();
-      console.log(deck);
       deckService.createDeck(deck)
       .then(function(data){
       var notification = {
@@ -36,13 +35,10 @@
       };
       NotificationService.create(notification)
         .then(function(notData){
-          console.log("Questions: ", questions);
           questions.forEach(function(question){
             question.deck_id = data[0];
-            console.log(question);
             deckService.createQuestion(question)
             .then(function(qData){
-              console.log(qData);
             });
           });
         });

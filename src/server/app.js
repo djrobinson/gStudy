@@ -16,6 +16,7 @@ var auth = require('./routes/auth.js');
 var decks = require('./routes/decks.js');
 var questions = require('./routes/questions.js');
 var notifications = require('./routes/notifications.js');
+var scores = require('./routes/scores.js');
 
 // *** jwt auth *** //
 routerProtect.use(function(req, res, next) {
@@ -63,6 +64,7 @@ app.use('/auth', auth);
 app.use('/api/decks', decks);
 app.use('/api/questions', questions);
 app.use('/api/notifications', notifications);
+app.use('/api/scores', scores);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -21,7 +21,6 @@
           ctrl.deck = deck[0];
         });
         deckService.getQuestions(id).then(function(questions){
-          console.log(questions);
           ctrl.deckQuestions = questions;
         });
       };
