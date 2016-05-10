@@ -13,5 +13,8 @@ module.exports = {
   },
   createDeck: function(deck){
     return Decks().insert(deck, 'id');
+  },
+  getUserDecks: function(user_id){
+    return Decks().where('user_id', user_id);
   }
 };

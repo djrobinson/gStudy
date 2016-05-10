@@ -11,8 +11,8 @@
       templateUrl: 'app/components/create.component/create.html'
     });
 
-  createController.$inject = ['$localStorage','deckService', 'NotificationService'];
-  function createController($localStorage, deckService, NotificationService){
+  createController.$inject = ['$localStorage', '$rootRouter','deckService', 'NotificationService'];
+  function createController($localStorage, $rootRouter, deckService, NotificationService){
     var ctrl = this;
 
     ctrl.questions = [0];
@@ -27,6 +27,8 @@
       var deck = ctrl.deck;
       var questions = ctrl.questions;
       deck.updated = new Date();
+      deck.user_id = $localStorage.user_id;
+      alert(deck);
       deckService.createDeck(deck)
       .then(function(data){
       var notification = {
@@ -39,6 +41,7 @@
             question.deck_id = data[0];
             deckService.createQuestion(question)
             .then(function(qData){
+              $rootRouter.navigate(['Main']);
             });
           });
         });

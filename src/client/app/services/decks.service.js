@@ -10,6 +10,7 @@
     function deckService($http, $log) {
         return {
             getDecks: getDecks,
+            getUserDecks: getUserDecks,
             getDeck: getDeck,
             createDeck: createDeck,
             createQuestion: createQuestion,
@@ -18,6 +19,20 @@
 
         function getDecks() {
             return $http.get('/api/decks')
+                .then(decksComplete)
+                .catch(decksComplete);
+
+            function decksComplete(response) {
+                return response.data;
+            }
+
+            function decksFailed(error) {
+                $log.error('XHR Failed for decks.' + error.data);
+            }
+        }
+
+        function getUserDecks(user_id){
+            return $http.get('/api/decks/'+user_id+'/user')
                 .then(decksComplete)
                 .catch(decksComplete);
 
