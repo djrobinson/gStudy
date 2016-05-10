@@ -11,8 +11,5 @@
     });
 
   function previousController(){
-      console.log("lakjsdf");
-      // var ctrl = this;
-      // ctrl.answers = answers;
     }
 })();

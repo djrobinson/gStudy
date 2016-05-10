@@ -9,8 +9,13 @@
       <br>
       <div class="row">
         <div class="twelve columns text-center">
-          <button ng-click="$ctrl.nextQuestion($ctrl.score[0], true)">Right</button>
-          <button ng-click="$ctrl.nextQuestion($ctrl.score[0], false)">Wrong</button>
+          <div ng-hide="$ctrl.done">
+            <button ng-click="$ctrl.nextQuestion($ctrl.score[0], true)">Right</button>
+            <button ng-click="$ctrl.nextQuestion($ctrl.score[0], false)">Wrong</button>
+          </div>
+          <div ng-show="$ctrl.done">
+            <button ng-click="$ctrl.home()">End Quiz</button>
+          </div>
         </div>
       </div>
       <br>

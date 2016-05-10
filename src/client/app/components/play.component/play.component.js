@@ -24,7 +24,9 @@
           console.log(questions);
           var deckQuestions = questions;
           ctrl.questions = shuffle(deckQuestions);
-          ctrl.nextQuestion();
+          ctrl.show = false;
+          ctrl.done = false;
+          ctrl.question = ctrl.questions[current];
         });
         var score = {
           user_id: $localStorage.user_id,
@@ -42,22 +44,21 @@
     ctrl.nextQuestion = function(score, result){
       ctrl.show = false;
       ctrl.question = ctrl.questions[current];
-      if (score){
-        ctrl.previousQuestions.push(ctrl.question);
-        if (result === true){
-          score.num_right = score.num_right + 1;
-          scoresService.updateScore(score).then(function(data){
-            score = data;
-          });
-        } else {
-          score.num_wrong = score.num_wrong + 1;
-          scoresService.updateScore(score).then(function(data){
-            score = data;
-          });
-        }
+      ctrl.previousQuestions.push(ctrl.question);
+      if (result === true){
+        score.num_right = score.num_right + 1;
+        scoresService.updateScore(score).then(function(data){
+          score = data;
+        });
+      } else {
+        score.num_wrong = score.num_wrong + 1;
+        scoresService.updateScore(score).then(function(data){
+          score = data;
+        });
       }
+
       if (current === ctrl.questions.length){
-        $location.path('/');
+        ctrl.done = true;
       } else {
         current++;
       }
@@ -65,6 +66,9 @@
     ctrl.showAnswer = function(){
       ctrl.show = true;
     };
+    ctrl.home = function(){
+      $location.path('/');
+    }
     function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
 
