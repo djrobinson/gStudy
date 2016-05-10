@@ -11,8 +11,8 @@
       templateUrl: 'app/components/login.component/login.html'
     });
 
-loginController.$inject = ['$rootScope', '$location', '$localStorage', 'Auth'];
-function loginController($rootScope, $location, $localStorage, Auth){
+loginController.$inject = ['$rootScope', '$location', '$rootRouter', '$localStorage', 'Auth'];
+function loginController($rootScope, $location, $rootRouter, $localStorage, Auth){
     var ctrl = this;
     function successAuth(res) {
 
@@ -22,7 +22,7 @@ function loginController($rootScope, $location, $localStorage, Auth){
           $localStorage.name = res.name;
           $localStorage.user_id = res.user_id;
           console.log("Successfully logged in!");
-          window.location = "/";
+          $rootRouter.navigate(['Main']);
         } else {
           console.log("login Failed");
         }

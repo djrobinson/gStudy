@@ -9,9 +9,7 @@
       controller: scoreController,
       templateUrl: 'app/components/play.component/score.html'
     });
-
   scoreController.$inject = ['deckService'];
-
   function scoreController(deckService){
     }
 })();
