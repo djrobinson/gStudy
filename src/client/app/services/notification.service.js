@@ -14,6 +14,9 @@
       },
       read: function (id) {
         return $http.put('/api/notifications/' + id + '/read');
+      },
+      create: function (notification) {
+        return $http.post('/api/notifications/create', notification);
       }
     };
   }

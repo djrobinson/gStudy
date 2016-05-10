@@ -20,14 +20,12 @@
       <thead>
         <tr>
           <th>Subject</th>
-          <th>Sender</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="notif in $ctrl.notifications"
             ng-class="{ 'warning': !notif.read }"
             ng-click="$ctrl.markAsRead(notif)">
-          <td>{{ notif.user_id }}</td>
           <td>{{ notif.content }}</td>
         </tr>
       </tbody>

@@ -57,3 +57,7 @@ nav ul li a:hover {
   position: relative;
   top: 8rem;
 }
+
+.warning {
+  background-color: #fbc97f;
+}

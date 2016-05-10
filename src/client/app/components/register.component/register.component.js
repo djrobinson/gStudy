@@ -19,6 +19,9 @@
          console.log(res.token);
       if (res.token){
         $localStorage.token = res.token;
+        $localStorage.email = res.email;
+        $localStorage.name = res.name;
+        $localStorage.user_id = res.user_id;
         console.log("Successfully registered in!");
         alert('pause');
         window.location = "/";

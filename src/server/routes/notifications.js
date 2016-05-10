@@ -17,6 +17,7 @@ router.post('/create', function(req, res, next){
   if ( !req.body || !req.body.content ) {
     res.status(422).json({ errors: { invalid: 'Requires a `content` key.' }});
   } else {
+    console.log(req.body);
     req.body.updated = new Date();
     req.body.read = false;
     knex('notifications').insert(req.body)

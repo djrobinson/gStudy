@@ -36,7 +36,6 @@
 
     SocketService.forward('notification.read', $scope);
     $scope.$on('socket:notification.read', function (ev, msg) {
-      console.log(msg);
       ctrl.unreadCount -= 1;
     });
 
@@ -50,10 +49,11 @@
       console.log(notif);
       if ( notif.read ) { ctrl.selected = notif; }
       else {
-        NotificationService.read(notif._id)
+        NotificationService.read(notif.id)
         .then(function (notification) {
+          console.log(notification);
           var selected = ctrl.notifications.filter(function (notif) {
-            return notif._id === notification.data._id;
+            return notif.id === notification.data[0].id;
           })[0];
           selected.read = true;
           ctrl.selected = selected;

@@ -46,7 +46,7 @@ router.post('/register', function(req, res, next) {
           name: name,
           email: email,
           password: hashedPassword
-        })
+        }, '*')
         .then(function(data) {
           var user = {
             name: name,
@@ -57,6 +57,9 @@ router.post('/register', function(req, res, next) {
             expiresIn: 6000
           });
           res.json({
+            user_id: data[0].id,
+            name: name,
+            email: email,
             token: token,
             message: "You've registered",
             status: "Success"
@@ -90,7 +93,12 @@ router.post('/login', function(req, res, next) {
           var token = jwt.sign(user, process.env.api_auth, {
             expiresIn: 6000
           });
-          return res.send({'token': token});
+          return res.send({
+            token: token,
+            name: user.name,
+            email: user.email,
+            user_id: user.id
+          });
         } else {
           // passwords don't match! return error
           return res.json('Incorrect password.');
