@@ -23,7 +23,6 @@
         $localStorage.name = res.name;
         $localStorage.user_id = res.user_id;
         console.log("Successfully registered in!");
-        alert('pause');
         window.location = "/";
       } else {
         console.log("login Failed");
