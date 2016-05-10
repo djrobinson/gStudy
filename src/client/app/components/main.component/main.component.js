@@ -11,13 +11,26 @@
       templateUrl: 'app/components/main.component/main.html'
     });
     //socketService was removed
-  mainController.$inject = ['$scope','deckService','NotificationService', 'SocketService'];
-  function mainController($scope, deckService, NotificationService, SocketService){
+  mainController.$inject = ['$scope','$localStorage','deckService','NotificationService', 'SocketService'];
+  function mainController($scope, $localStorage, deckService, NotificationService, SocketService){
     var ctrl = this;
-    deckService.getDecks()
-    .then(function(data){
-      ctrl.decks = data;
-    });
+    var user_id = $localStorage.user_id;
+
+    ctrl.userDecks = function(){
+      deckService.getUserDecks(user_id)
+      .then(function(data){
+        ctrl.decks = data;
+      });
+    };
+    //Call immediately on initial load
+    ctrl.userDecks();
+
+    ctrl.allDecks = function(){
+      deckService.getDecks()
+      .then(function(data){
+        ctrl.decks = data;
+      });
+    };
 
     SocketService.forward('status', $scope);
     $scope.$on('socket:status', function (ev, data) {
@@ -25,7 +38,6 @@
     });
 
     NotificationService.get().then(function (notifications) {
-      console.log(notifications.data);
       ctrl.notifications = notifications.data;
       ctrl.unreadCount = ctrl.notifications.filter(function (notif) {
         return !notif.read;
@@ -51,7 +63,6 @@
       else {
         NotificationService.read(notif.id)
         .then(function (notification) {
-          console.log(notification);
           var selected = ctrl.notifications.filter(function (notif) {
             return notif.id === notification.data[0].id;
           })[0];
