@@ -18,8 +18,10 @@
     ctrl.questions = [];
     var current = 0;
     ctrl.previousQuestions = [];
+    var id = 0;
+    var user_id = $localStorage.user_id;
     this.$routerOnActivate = function(next, previous) {
-        var id = next.params.id;
+        id = next.params.id;
         deckService.getQuestions(id).then(function(questions){
           console.log(questions);
           var deckQuestions = questions;
@@ -29,14 +31,13 @@
           ctrl.question = ctrl.questions[current];
         });
         var score = {
-          user_id: $localStorage.user_id,
+          user_id: user_id,
           deck_id: id,
           num_right: 0,
           num_wrong: 0,
           updated: new Date()
         };
         scoresService.createScore(score).then(function(score){
-          console.log(score);
           ctrl.score = score;
         });
       };
@@ -51,12 +52,18 @@
           score = data;
         });
       } else {
+        //ADD WRONG QUESTION TO THE WRONGS TABLE
+        scoresService.addWrong(user_id, ctrl.question.id, id)
+        .then(function(data){
+          console.log("wrong added: ",data);
+        });
+        //UPDATE OVERALL SCORE
         score.num_wrong = score.num_wrong + 1;
-        scoresService.updateScore(score).then(function(data){
+        scoresService.updateScore(score)
+        .then(function(data){
           score = data;
         });
       }
-
       if (current === ctrl.questions.length - 1){
         ctrl.done = true;
       } else {

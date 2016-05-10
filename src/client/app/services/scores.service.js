@@ -10,7 +10,8 @@
     function scoresService($http, $log) {
         return {
             createScore: createScore,
-            updateScore: updateScore
+            updateScore: updateScore,
+            addWrong: addWrong
         };
 
         function createScore(score) {
@@ -41,6 +42,27 @@
 
             function scoreFailed(error) {
                 $log.error('XHR Failed for score.' + error.data);
+            }
+        }
+
+        function addWrong(user_id, question_id, deck_id){
+            var question = {
+                user_id: user_id,
+                question_id: question_id,
+                deck_id: deck_id,
+                updated: new Date()
+            };
+            return $http.post('/api/wrongs/create', question)
+                .then(scoreComplete)
+                .catch(scoreComplete);
+
+            function scoreComplete(response) {
+                console.log(response.data);
+                return response.data;
+            }
+
+            function scoreFailed(error) {
+                $log.error('XHR Failed for wrongs.' + error.data);
             }
         }
     }
