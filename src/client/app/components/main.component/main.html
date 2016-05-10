@@ -9,7 +9,7 @@
       </div>
 
         <div class="one-third column box text-center" ng-repeat="deck in $ctrl.decks">
-          <h5>{{deck.title}}</h5>
+          <h5><a ng-link="['Show', {id: {{deck.id}}}]"> {{deck.title}}</a></h5>
           <p>{{deck.description}}</p>
         </div>
 

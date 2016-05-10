@@ -1,15 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var query = require('../db/question_queries.js');
+var query = require('../db/score_queries.js');
 
 router.get('/', function(req, res, next){
   query.getQuestions().then(function(data){
-    res.json(data);
-  });
-});
-
-router.get('/:id', function(req, res, next){
-  query.getDeckQuestions(req.params.id).then(function(data){
     res.json(data);
   });
 });

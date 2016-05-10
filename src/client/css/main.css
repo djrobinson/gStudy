@@ -47,16 +47,6 @@ nav ul li a:hover {
   width: 100%;
 }
 
-.question {
-  position: relative;
-
-  top: 4rem;
-}
-
-.answer {
-  position: relative;
-  top: 8rem;
-}
 
 .warning {
   background-color: #fbc97f;

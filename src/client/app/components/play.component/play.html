@@ -1,0 +1,65 @@
+
+  <div class="row">
+    <div class="six columns">
+      <div class="row">
+        <div class="twelve columns box text-center question">
+          <h4>{{$ctrl.question.question}}</h4>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="twelve columns text-center">
+          <button ng-click="$ctrl.nextQuestion(true)">Right</button>
+          <button ng-click="$ctrl.nextQuestion(false)">Wrong</button>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="twelve columns box text-center answer" ng-click="$ctrl.showAnswer()">
+          <div ng-show="$ctrl.show">
+            <h4>{{$ctrl.question.answer}}</h4>
+          </div>
+          <div ng-hide="$ctrl.show">
+            <h4>What is an Answer?</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="six columns">
+      <h3>Beginning CSS</h3>
+      <current-score></current-score>
+      <div class="twelve columns">
+        <div class="one-third column">
+          <p>Remaining</p>
+        </div>
+        <div class="one-third column">
+          <p>Correct</p>
+        </div>
+        <div class="one-third column">
+          <p>Incorrect</p>
+        </div>
+      </div>
+
+      <hr>
+      <div class="twelve columns">
+        <h4>Previously Answered</h4>
+      </div>
+      <div class="row">
+        <previous-answers></previous-answers>
+        <div class="six columns box">
+          <h5>Question 1</h5>
+        </div>
+        <div class="six columns box">
+          <h5>Question 2</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="six columns box">
+          <h5>Question 1</h5>
+        </div>
+        <div class="six columns box">
+          <h5>Question 2</h5>
+        </div>
+      </div>
+    </div>
+  </div>

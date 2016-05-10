@@ -8,6 +8,12 @@ router.get('/', function(req, res, next){
   });
 });
 
+router.get('/:id/deck', function(req, res, next){
+  query.getDeck(req.params.id).then(function(data){
+    res.json(data);
+  });
+});
+
 router.post('/create', function(req, res, next){
   console.log(req.body);
   var deck = req.body;

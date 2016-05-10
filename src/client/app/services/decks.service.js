@@ -10,12 +10,29 @@
     function deckService($http, $log) {
         return {
             getDecks: getDecks,
+            getDeck: getDeck,
             createDeck: createDeck,
-            createQuestion: createQuestion
+            createQuestion: createQuestion,
+            getQuestions: getQuestions
         };
 
         function getDecks() {
             return $http.get('/api/decks')
+                .then(decksComplete)
+                .catch(decksComplete);
+
+            function decksComplete(response) {
+                console.log(response.data);
+                return response.data;
+            }
+
+            function decksFailed(error) {
+                $log.error('XHR Failed for decks.' + error.data);
+            }
+        }
+
+        function getDeck(id){
+            return $http.get('/api/decks/'+id+'/deck')
                 .then(decksComplete)
                 .catch(decksComplete);
 
@@ -55,6 +72,21 @@
             }
 
             function createQuestionFailed(error) {
+                $log.error('XHR Failed for questions.' + error.data);
+            }
+        }
+
+        function getQuestions(deck_id){
+            return $http.get('/api/questions/'+deck_id)
+                .then(questionsComplete)
+                .catch(questionsFailed);
+
+            function questionsComplete(response) {
+                console.log(response.data);
+                return response.data;
+            }
+
+            function questionsFailed(error) {
                 $log.error('XHR Failed for questions.' + error.data);
             }
         }

@@ -37,7 +37,9 @@ angular
     {path: '/login', name: 'Login', component: 'loginComponent'},
     {path: '/register', name: 'Register', component: 'registerComponent' },
     {path: '/home', name: 'Main', component: 'mainComponent', useAsDefault: true},
-    {path: '/create', name: 'Create', component: 'createComponent'}
+    {path: '/create', name: 'Create', component: 'createComponent'},
+    {path: '/show/:id', name: 'Show', component: 'showComponent'},
+    {path: '/play/:id', name: 'Play', component: 'playComponent'}
   ],
   controller: logoutController
 });
