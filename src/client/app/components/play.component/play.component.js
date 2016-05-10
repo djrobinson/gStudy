@@ -11,9 +11,9 @@
       templateUrl: 'app/components/play.component/play.html'
     });
 
-  playController.$inject = ['$location', '$localStorage','deckService', 'scoresService'];
+  playController.$inject = ['$location', '$localStorage','$rootRouter','deckService', 'scoresService'];
 
-  function playController($location, $localStorage, deckService, scoresService){
+  function playController($location, $localStorage, $rootRouter, deckService, scoresService){
     var ctrl = this;
     ctrl.questions = [];
     var current = 0;
@@ -67,8 +67,8 @@
       ctrl.show = true;
     };
     ctrl.home = function(){
-      $location.path('/');
-    }
+      $rootRouter.navigate(['Main']);
+    };
     function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
 
