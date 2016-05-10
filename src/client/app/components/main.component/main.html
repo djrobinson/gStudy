@@ -8,9 +8,12 @@
         <hr>
       </div>
 
-        <div class="one-third column box text-center" ng-repeat="deck in $ctrl.decks">
+        <div class="one-third column box text-center" ng-repeat="(key, deck) in $ctrl.decks track by key">
           <h5><a ng-link="['Show', {id: {{deck.id}}}]"> {{deck.title}}</a></h5>
           <p>{{deck.description}}</p>
+          <div ng-if="deck.copy">
+            <button ng-click="$ctrl.copyDeck(deck)">Copy</button>
+          </div>
         </div>
 
 

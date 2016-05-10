@@ -28,8 +28,27 @@
     ctrl.allDecks = function(){
       deckService.getDecks()
       .then(function(data){
-        ctrl.decks = data;
+        var copyableDecks = data.filter(function(deck){
+          if (deck.user_id !== user_id){
+            deck.copy = true;
+            return  deck;
+          }
+        });
+        ctrl.decks = copyableDecks;
       });
+    };
+
+    ctrl.copyDeck = function(deck){
+      var newDeck = {
+        title: deck.title,
+        description: deck.description,
+        updated: new Date(),
+        user_id: user_id
+      };
+      deckService.createDeck(newDeck)
+        .then(function(data){
+          console.log("your deck created!");
+        });
     };
 
     SocketService.forward('status', $scope);

@@ -28,7 +28,6 @@
       var questions = ctrl.questions;
       deck.updated = new Date();
       deck.user_id = $localStorage.user_id;
-      alert(deck);
       deckService.createDeck(deck)
       .then(function(data){
       var notification = {
