@@ -11,7 +11,8 @@
         return {
             createScore: createScore,
             updateScore: updateScore,
-            addWrong: addWrong
+            addWrong: addWrong,
+            getWrongs: getWrongs
         };
 
         function createScore(score) {
@@ -53,6 +54,21 @@
                 updated: new Date()
             };
             return $http.post('/api/wrongs/create', question)
+                .then(scoreComplete)
+                .catch(scoreComplete);
+
+            function scoreComplete(response) {
+                console.log(response.data);
+                return response.data;
+            }
+
+            function scoreFailed(error) {
+                $log.error('XHR Failed for wrongs.' + error.data);
+            }
+        }
+
+        function getWrongs(user_id, deck_id){
+            return $http.get('/api/wrongs/'+user_id+'/'+deck_id)
                 .then(scoreComplete)
                 .catch(scoreComplete);
 

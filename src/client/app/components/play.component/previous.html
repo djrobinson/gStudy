@@ -1,4 +1,4 @@
-<div ng-repeat="answer in $ctrl.answers">
+<div ng-repeat="(key, answer) in $ctrl.answers track by key">
   <div class="six columns box">
     <h5>{{answer.question}}</h5>
     <h5>{{answer.answer}}</h5>

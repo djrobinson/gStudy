@@ -18,14 +18,32 @@
     ctrl.questions = [];
     var current = 0;
     ctrl.previousQuestions = [];
+    var wrongs = [];
     var id = 0;
     var user_id = $localStorage.user_id;
     this.$routerOnActivate = function(next, previous) {
         id = next.params.id;
-        deckService.getQuestions(id).then(function(questions){
-          console.log(questions);
+        scoresService.getWrongs(user_id, id)
+        .then(function(questions){
+          questions.forEach(function(question){
+            wrongs.push(question.question_id);
+          });
+        });
+        deckService.getQuestions(id)
+        .then(function(questions){
           var deckQuestions = questions;
-          ctrl.questions = shuffle(deckQuestions);
+          var missedQuestions = [];
+          deckQuestions.forEach(function(ques){
+            console.log(ques.id);
+            if (wrongs.indexOf(ques.id) !== -1){
+              missedQuestions.push(ques);
+              missedQuestions.push(ques);
+            } else {
+              missedQuestions.push(ques);
+            }
+          });
+          ctrl.questions = shuffle(missedQuestions);
+          console.log(ctrl.questions);
           ctrl.show = false;
           ctrl.done = false;
           ctrl.question = ctrl.questions[current];

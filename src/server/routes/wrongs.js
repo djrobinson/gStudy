@@ -11,10 +11,10 @@ router.post('/create', function(req, res, next){
   });
 });
 
-router.get('/', function(req, res, next){
-  var user_id = req.body.user_id;
-  var deck_id = req.body.deck_id;
-  query.updateWrong(score).then(function(data){
+router.get('/:user_id/:deck_id', function(req, res, next){
+  var user_id = req.params.user_id;
+  var deck_id = req.params.deck_id;
+  query.getWrongs(user_id, deck_id).then(function(data){
     res.json(data);
   });
 });
