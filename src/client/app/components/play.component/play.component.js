@@ -17,7 +17,7 @@
     var ctrl = this;
     ctrl.questions = [];
     var current = 0;
-    $localStorage.questions = [];
+    ctrl.previousQuestions = [];
     this.$routerOnActivate = function(next, previous) {
         var id = next.params.id;
         deckService.getQuestions(id).then(function(questions){
@@ -43,10 +43,9 @@
       ctrl.show = false;
       ctrl.question = ctrl.questions[current];
       if (score){
-        $localStorage.questions.push(ctrl.question);
+        ctrl.previousQuestions.push(ctrl.question);
         if (result === true){
           score.num_right = score.num_right + 1;
-          console.log("Current score ", score);
           scoresService.updateScore(score).then(function(data){
             score = data;
           });
