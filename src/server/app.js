@@ -22,12 +22,13 @@ var scores = require('./routes/scores.js');
 routerProtect.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  console.log(token);
   // decode token
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, 'superSecret', function(err, decoded) {
+    jwt.verify(token, process.env.api_auth, function(err, decoded) {
       if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
+        return res.status(403).json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded;
@@ -60,6 +61,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.get('/', function(req,res,next) {
     res.sendFile(path.join(__dirname, '../client/app', 'index.html'));
 });
+app.use('/api/', routerProtect);
 app.use('/auth', auth);
 app.use('/api/decks', decks);
 app.use('/api/questions', questions);

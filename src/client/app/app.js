@@ -1,14 +1,10 @@
 (function(){
-
-
 'use strict';
-
-
 angular
   .module('gStudyApp', ['ngComponentRouter', 'ngStorage', 'btford.socket-io'])
 
-.config(function($locationProvider, $httpProvider) {
-  $locationProvider.html5Mode(true);
+  .config(function($locationProvider, $httpProvider) {
+    $locationProvider.html5Mode(true);
 
   $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function ($q, $location, $localStorage) {
     return {
@@ -34,9 +30,9 @@ angular
 .component('home', {
   templateUrl: 'app/template.html',
   $routeConfig: [
-    {path: '/login', name: 'Login', component: 'loginComponent'},
+    {path: '/login', name: 'Login', component: 'loginComponent', useAsDefault: true},
     {path: '/register', name: 'Register', component: 'registerComponent' },
-    {path: '/home', name: 'Main', component: 'mainComponent', useAsDefault: true},
+    {path: '/home', name: 'Main', component: 'mainComponent'},
     {path: '/create', name: 'Create', component: 'createComponent'},
     {path: '/show/:id', name: 'Show', component: 'showComponent'},
     {path: '/play/:id', name: 'Play', component: 'playComponent'}
@@ -46,12 +42,12 @@ angular
 
 
 
-logoutController.$inject = ['Auth'];
-function logoutController(Auth){
+logoutController.$inject = ['$location', 'Auth'];
+function logoutController($location, Auth){
   var ctrl = this;
   ctrl.logout = function () {
          Auth.logout(function () {
-             window.location = "/"
+             $location.path('/login');
          });
      };
 }

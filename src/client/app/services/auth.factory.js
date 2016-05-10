@@ -35,12 +35,15 @@ angular.module('gStudyApp')
            },
            login: function (data, success, error) {
                 // $localStorage.token = data.data.token;
-                console.log(data);
                 $http.post('/auth/login', data).success(success).error(error);
            },
            logout: function (success) {
+            console.log("Loguout");
                tokenClaims = {};
                delete $localStorage.token;
+               delete $localStorage.email;
+               delete $localStorage.name;
+               delete $localStorage.user_id;
                success();
            },
            getTokenClaims: function () {

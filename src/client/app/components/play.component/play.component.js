@@ -57,7 +57,7 @@
         });
       }
 
-      if (current === ctrl.questions.length){
+      if (current === ctrl.questions.length - 1){
         ctrl.done = true;
       } else {
         current++;
