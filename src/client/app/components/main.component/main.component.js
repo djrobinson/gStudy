@@ -56,12 +56,16 @@
       console.log(ev, data);
     });
 
-    NotificationService.get().then(function (notifications) {
-      ctrl.notifications = notifications.data;
-      ctrl.unreadCount = ctrl.notifications.filter(function (notif) {
-        return !notif.read;
-      }).length;
-    });
+    ctrl.getNotif = function(){
+      NotificationService.get().then(function (notifications) {
+        ctrl.notifications = notifications.data;
+        ctrl.unreadCount = ctrl.notifications.filter(function (notif) {
+          return !notif.read;
+        }).length;
+      });
+    };
+
+    ctrl.getNotif();
 
     ctrl.markAsRead = markAsRead;
 
@@ -72,8 +76,11 @@
 
     SocketService.forward('notification.create', $scope);
     $scope.$on('socket:notification.create', function (ev, notification) {
+      console.log(notification);
+      console.log(ev);
       ctrl.notifications.push(notification);
       ctrl.unreadCount += 1;
+      ctrl.getNotif();
     });
 
     function markAsRead (notif) {
