@@ -65,6 +65,11 @@
     };
 
     ctrl.nextQuestion = function(score, result){
+      if (current === ctrl.questions.length - 1){
+        ctrl.done = true;
+      } else {
+        current++;
+      }
       ctrl.show = false;
       ctrl.question = ctrl.questions[current];
       ctrl.previousQuestions.push(ctrl.question);
@@ -86,11 +91,7 @@
           score = data;
         });
       }
-      if (current === ctrl.questions.length - 1){
-        ctrl.done = true;
-      } else {
-        current++;
-      }
+
     };
     ctrl.showAnswer = function(){
       ctrl.show = true;

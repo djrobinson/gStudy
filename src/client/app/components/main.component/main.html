@@ -15,6 +15,7 @@
           </div>
           <div class="card-content">
             <h5><a ng-link="['Show', {id: {{deck.id}}}]"> {{deck.title}}</a></h5>
+            <p>Last updated {{deck.updated | date}}</p>
             <p>{{deck.description}}</p>
             <div ng-if="deck.copy">
               <button ng-click="$ctrl.copyDeck(deck)">Copy</button>

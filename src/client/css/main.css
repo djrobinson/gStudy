@@ -145,7 +145,7 @@ nav ul li a:hover {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #00008B;
   width: 40%;
   color: white;
   font-size: 4rem;
@@ -162,6 +162,14 @@ tr {
 
 .show-content {
   margin-top: 4rem;
+}
+
+.quiz-pic {
+  height: 20rem;
+}
+
+.ques {
+  display: block;
 }
 
 .title-img {
@@ -201,5 +209,5 @@ tr {
 }
 
 .warning {
-  background-color: #fbc97f;
+  background-color: #7FFFD4;
 }
