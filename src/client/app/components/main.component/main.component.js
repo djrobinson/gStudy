@@ -17,6 +17,8 @@
     var user_id = $localStorage.user_id;
 
     ctrl.userDecks = function(){
+      ctrl.mine = true;
+      ctrl.all = false;
       deckService.getUserDecks(user_id)
       .then(function(data){
         ctrl.decks = data;
@@ -26,6 +28,8 @@
     ctrl.userDecks();
 
     ctrl.allDecks = function(){
+      ctrl.mine = false;
+      ctrl.all = true;
       deckService.getDecks()
       .then(function(data){
         var copyableDecks = data.filter(function(deck){

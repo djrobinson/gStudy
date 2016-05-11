@@ -22,43 +22,47 @@
     var id = 0;
     var user_id = $localStorage.user_id;
     this.$routerOnActivate = function(next, previous) {
-        id = next.params.id;
-        scoresService.getWrongs(user_id, id)
-        .then(function(questions){
-          questions.forEach(function(question){
-            wrongs.push(question.question_id);
-          });
+      id = next.params.id;
+      deckService.getDeck(id)
+      .then(function(data){
+        ctrl.deckTitle = data[0].title;
+      });
+      scoresService.getWrongs(user_id, id)
+      .then(function(questions){
+        questions.forEach(function(question){
+          wrongs.push(question.question_id);
         });
-        deckService.getQuestions(id)
-        .then(function(questions){
-          var deckQuestions = questions;
-          var missedQuestions = [];
-          deckQuestions.forEach(function(ques){
-            console.log(ques.id);
-            if (wrongs.indexOf(ques.id) !== -1){
-              missedQuestions.push(ques);
-              missedQuestions.push(ques);
-            } else {
-              missedQuestions.push(ques);
-            }
-          });
-          ctrl.questions = shuffle(missedQuestions);
-          console.log(ctrl.questions);
-          ctrl.show = false;
-          ctrl.done = false;
-          ctrl.question = ctrl.questions[current];
+      });
+      deckService.getQuestions(id)
+      .then(function(questions){
+        var deckQuestions = questions;
+        var missedQuestions = [];
+        deckQuestions.forEach(function(ques){
+          console.log(ques.id);
+          if (wrongs.indexOf(ques.id) !== -1){
+            missedQuestions.push(ques);
+            missedQuestions.push(ques);
+          } else {
+            missedQuestions.push(ques);
+          }
         });
-        var score = {
-          user_id: user_id,
-          deck_id: id,
-          num_right: 0,
-          num_wrong: 0,
-          updated: new Date()
-        };
-        scoresService.createScore(score).then(function(score){
-          ctrl.score = score;
-        });
+        ctrl.questions = shuffle(missedQuestions);
+        console.log(ctrl.questions);
+        ctrl.show = false;
+        ctrl.done = false;
+        ctrl.question = ctrl.questions[current];
+      });
+      var score = {
+        user_id: user_id,
+        deck_id: id,
+        num_right: 0,
+        num_wrong: 0,
+        updated: new Date()
       };
+      scoresService.createScore(score).then(function(score){
+        ctrl.score = score;
+      });
+    };
 
     ctrl.nextQuestion = function(score, result){
       ctrl.show = false;

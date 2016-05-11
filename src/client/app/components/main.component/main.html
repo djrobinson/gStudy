@@ -4,7 +4,8 @@
       <div class="row text-center">
         <h1><a ng-link="['Create']">+ Create a New Deck!</a></h1>
         <br>
-        <button ng-click="$ctrl.userDecks()">My Decks</button><button ng-click="$ctrl.allDecks()">All Decks</button>
+          <div class="mainButton" ng-class="{'active': $ctrl.mine}" ng-click="$ctrl.userDecks()">My Decks</div>
+          <div class="mainButton"  ng-class="{'active': $ctrl.all}" ng-click="$ctrl.allDecks()">All Decks</div>
         <hr>
       </div>
       <div class="all-decks">
@@ -27,14 +28,14 @@
       <table class="table table-hover notifications">
       <thead>
         <tr >
-          <th class="text-center"><h4>Notifications</h4></th>
+          <th class="text-center"><h2>Notifications</h2></th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="notif in $ctrl.notifications"
             ng-class="{ 'warning': !notif.read }"
             ng-click="$ctrl.markAsRead(notif)">
-          <td>{{ notif.content }}</td>
+          <td class="text-center">{{ notif.content }}</td>
         </tr>
       </tbody>
     </table>

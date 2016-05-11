@@ -2,6 +2,20 @@
   margin: 2rem;
 }
 
+html {
+  height:100%;
+  width:100%;
+}
+
+body {
+  height:100%;
+  width:100%;
+}
+
+.navrow  {
+  border-bottom: solid 1px black;
+}
+
 .reset {
   margin: 0 !important;
   padding: 0 !important;
@@ -25,6 +39,31 @@ a {
   float: right;
 }
 
+.question-container {
+    position: relative;
+    height:40rem;
+    width:100%;
+}
+
+.question {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height:30rem;
+    margin: 4rem;
+    border: solid 1px #B0B0B0;
+}
+
+.answer {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height:30rem;
+    margin: 4rem;
+    border: solid 1px #B0B0B0;
+}
 
 @media (min-width: 600px ){
 
@@ -45,6 +84,13 @@ a {
   .title {
     float: left;
   }
+  .all-decks {
+    margin-left: 7rem;
+  }
+  .notifications {
+    width: 95%;
+    float: right;
+  }
 }
 
 @media (max-width: 600px) {
@@ -59,6 +105,7 @@ a {
   .notifications {
     width: 100%;
   }
+
 }
 
 .samples {
@@ -90,6 +137,33 @@ nav ul li a:hover {
   height: 100%;
 }
 
+.prev {
+  height: 20rem;
+}
+
+.mainButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 40%;
+  color: white;
+  font-size: 4rem;
+  height: 10rem;
+}
+
+.active {
+  background-color: gray;
+}
+
+tr {
+  height: 8rem;
+}
+
+.show-content {
+  margin-top: 4rem;
+}
+
 .title-img {
   width: 100%;
 }
@@ -98,14 +172,16 @@ nav ul li a:hover {
   padding: 0;
   margin: 0;
   height: 100%;
-  left: -25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   z-index: 0;
 }
 
 .card-content {
   width: 100%;
-  background-color: rgba(200,200,200, 0.5)  ;
+  background-color: rgba(200,200,200, 0.8)  ;
   position: absolute;
   z-index: 2;
   bottom: 2rem;
@@ -119,16 +195,10 @@ nav ul li a:hover {
   overflow: hidden;
 }
 
-
-.all-decks {
-  margin-left: 7rem;
-}
-
 .create {
   margin-left: 2rem;
   margin-right: 2rem;
 }
-
 
 .warning {
   background-color: #fbc97f;
