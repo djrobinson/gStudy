@@ -11,9 +11,9 @@
       templateUrl: 'app/components/play.component/play.html'
     });
 
-  playController.$inject = ['$location', '$localStorage','$rootRouter','deckService', 'scoresService'];
+  playController.$inject = ['$location', '$localStorage','$rootRouter','deckService', 'scoresService', 'NotificationService'];
 
-  function playController($location, $localStorage, $rootRouter, deckService, scoresService){
+  function playController($location, $localStorage, $rootRouter, deckService, scoresService, NotificationService){
     var ctrl = this;
     ctrl.questions = [];
     var current = 0;
@@ -96,19 +96,23 @@
       ctrl.show = true;
     };
     ctrl.home = function(){
+      if (ctrl.score[0].num_wrong === 0){
+        var notification = {
+          user: $localStorage.name,
+          content: $localStorage.name + ' just scored a 100% on ' + ctrl.deckTitle
+        };
+        NotificationService.create(notification)
+          .then(function(notData){
+            console.log(notData);
+          });
+      }
       $rootRouter.navigate(['Main']);
     };
     function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex;
-
-      // While there remain elements to shuffle...
       while (0 !== currentIndex) {
-
-        // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
-        // And swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;

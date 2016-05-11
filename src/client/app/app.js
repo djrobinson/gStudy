@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 angular
-  .module('gStudyApp', ['ngComponentRouter', 'ngStorage', 'btford.socket-io'])
+  .module('gStudyApp', ['ngComponentRouter', 'ngStorage', 'ngMessages', 'btford.socket-io'])
 
   .config(function($locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);

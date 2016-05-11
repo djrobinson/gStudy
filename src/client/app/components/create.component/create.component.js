@@ -24,27 +24,29 @@
     };
 
     ctrl.createDeck = function(){
-      var deck = ctrl.deck;
-      var questions = ctrl.questions;
-      deck.updated = new Date();
-      deck.user_id = $localStorage.user_id;
-      deckService.createDeck(deck)
-      .then(function(data){
-      var notification = {
-        user: $localStorage.name,
-        content: $localStorage.name + ' just created a deck: ' + deck.title
-      };
-      NotificationService.create(notification)
-        .then(function(notData){
-          questions.forEach(function(question){
-            question.deck_id = data[0];
-            deckService.createQuestion(question)
-            .then(function(qData){
-              $rootRouter.navigate(['Main']);
+      if (ctrl.deck){
+        var deck = ctrl.deck;
+        var questions = ctrl.questions;
+        deck.updated = new Date();
+        deck.user_id = $localStorage.user_id;
+        deckService.createDeck(deck)
+        .then(function(data){
+        var notification = {
+          user: $localStorage.name,
+          content: $localStorage.name + ' just created a deck: ' + deck.title
+        };
+        NotificationService.create(notification)
+          .then(function(notData){
+            questions.forEach(function(question){
+              question.deck_id = data[0];
+              deckService.createQuestion(question)
+              .then(function(qData){
+                $rootRouter.navigate(['Main']);
+              });
             });
           });
         });
-      });
+      }
     };
   }
 })();

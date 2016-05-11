@@ -47,6 +47,7 @@
         title: deck.title,
         description: deck.description,
         updated: new Date(),
+        img_url: deck.img_url,
         user_id: user_id
       };
       deckService.createDeck(newDeck)

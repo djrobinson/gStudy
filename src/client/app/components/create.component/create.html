@@ -1,4 +1,5 @@
 <div class="row create">
+  <form>
   <div class="twelve column text-center">
     <h1>Create a New Deck</h1>
   </div>
@@ -8,13 +9,13 @@
   <div class="twelve column box">
     <div class="six columns">
       <label>Deck Name</label>
-      <input class="u-full-width" type="text" ng-model="$ctrl.deck.title">
+      <input class="u-full-width" type="text" ng-model="$ctrl.deck.title" required>
       <label>Deck Image Url</label>
       <input class="u-full-width" type="text" ng-model="$ctrl.deck.img_url">
     </div>
     <div class="six columns">
       <label>Deck Description</label>
-      <textarea class="u-full-width" ng-model="$ctrl.deck.description"></textarea>
+      <textarea class="u-full-width" ng-model="$ctrl.deck.description" required></textarea>
     </div>
   </div>
   <div class="twelve column">
@@ -24,11 +25,11 @@
     <div class="row">
       <div class="six columns">
         <label>Question</label>
-        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].question">
+        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].question" required>
       </div>
       <div class="six columns">
         <label>Answer</label>
-        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].answer">
+        <input class="u-full-width" type="text" ng-model="$ctrl.questions[key].answer" required>
       </div>
     </div>
     <div class="row">
@@ -50,5 +51,5 @@
     <br>
     <button class="pull-right" ng-click="$ctrl.createDeck()">Create Deck</button>
   </div>
-
+  </form>
 </div>
