@@ -32,7 +32,7 @@
       .then(function(data){
       var notification = {
         user: $localStorage.name,
-        content: $localStorage.name + 'just created a deck: ' + deck.title
+        content: $localStorage.name + ' just created a deck: ' + deck.title
       };
       NotificationService.create(notification)
         .then(function(notData){

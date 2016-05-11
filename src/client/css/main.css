@@ -2,6 +2,12 @@
   margin: 2rem;
 }
 
+.reset {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
 a {
   text-decoration: none;
 }
@@ -49,18 +55,19 @@ a {
     text-align: center;
     width: 100%;
     border: solid 1px #B0B0B0;
-
   }
-
-  .samples {
-    text-align: center;
-  }
-
   .notifications {
     width: 100%;
   }
 }
 
+.samples {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
 
 nav ul li a {
   font-size: 3rem;
@@ -85,6 +92,41 @@ nav ul li a:hover {
 
 .title-img {
   width: 100%;
+}
+
+.deck-img {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  left: -25%;
+  position: absolute;
+  z-index: 0;
+}
+
+.card-content {
+  width: 100%;
+  background-color: rgba(200,200,200, 0.5)  ;
+  position: absolute;
+  z-index: 2;
+  bottom: 2rem;
+}
+
+.deck-container {
+  padding: 0;
+  margin: 0;
+  height: 40rem;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.all-decks {
+  margin-left: 7rem;
+}
+
+.create {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 

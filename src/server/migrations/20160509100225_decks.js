@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.text('description');
     table.date('updated');
     table.integer('user_id');
+    table.string('img_url')
   });
 };
 

@@ -7,22 +7,27 @@
         <button ng-click="$ctrl.userDecks()">My Decks</button><button ng-click="$ctrl.allDecks()">All Decks</button>
         <hr>
       </div>
-
-        <div class="one-third column box text-center" ng-repeat="(key, deck) in $ctrl.decks track by key">
-          <h5><a ng-link="['Show', {id: {{deck.id}}}]"> {{deck.title}}</a></h5>
-          <p>{{deck.description}}</p>
-          <div ng-if="deck.copy">
-            <button ng-click="$ctrl.copyDeck(deck)">Copy</button>
+      <div class="all-decks">
+        <div class="one-third column box text-center deck-container" ng-repeat="(key, deck) in $ctrl.decks track by key">
+          <div ng-if="deck.img_url">
+            <img ng-src="{{deck.img_url}}" class="deck-img">
+          </div>
+          <div class="card-content">
+            <h5><a ng-link="['Show', {id: {{deck.id}}}]"> {{deck.title}}</a></h5>
+            <p>{{deck.description}}</p>
+            <div ng-if="deck.copy">
+              <button ng-click="$ctrl.copyDeck(deck)">Copy</button>
+            </div>
           </div>
         </div>
-
+      </div>
 
     </div>
     <div class="one-third column">
       <table class="table table-hover notifications">
       <thead>
-        <tr>
-          <th>Subject</th>
+        <tr >
+          <th class="text-center"><h4>Notifications</h4></th>
         </tr>
       </thead>
       <tbody>

@@ -12,7 +12,6 @@ angular
            config.headers = config.headers || {};
            if ($localStorage.token) {
               $rootScope.loggedIn = true;
-              console.log("Root Scope! ", $rootScope.loggedIn);
               config.headers['x-access-token'] = $localStorage.token;
            }
            return config;
